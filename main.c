@@ -38,29 +38,6 @@ int main(void) {
 		Delay();
 		Delay();
 
-//		StopBot();
-//		Delay();
-//		MoveForward();
-//		Delay();
-//		StopBot();
-//		Delay();
-//		Delay();
-//		MoveBack();
-//		Delay();
-//		StopBot();
-//		Delay();\
-
-//		TurnRight();
-//		ShortDelay();
-//		StopBot();
-//		Delay();
-//		Delay();
-//		TurnRight();
-//		Delay();
-//		StopBot();
-//		Delay();
-//		Delay();
-
 	}
 
 }
