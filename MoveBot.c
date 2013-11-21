@@ -4,7 +4,11 @@
  *  Created on: Nov 18, 2013
  *      Author: C15Derek.Titus
  */
-int loop(void)
+
+#include "MoveBot.h"
+#include <msp430.h>
+
+void initMotors()
 {
 
     P1DIR |= BIT1;				//TA0.0 on P1.1
@@ -49,54 +53,78 @@ int loop(void)
     TA1CTL |= MC0; //count up
     TACTL |= MC0;                // count up
 
+}
 
-	RightMotorForward(){
+
+void RightMotorForward()
+    {
 		TA1CCTL1 &= ~OUTMOD0;
 		TA1CCTL1 |= OUTMOD_4;        // set TACCTL1 to Reset mode
 		TA1CCTL0 &= ~OUTMOD0;
 		TA1CCTL0 |= OUTMOD_5;
 	}
 
-	RightMotorBackward(){
+void	RightMotorBackward(){
 		TA1CCTL1 &= ~OUTMOD0;
 		TA1CCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
 	    TA1CCTL0 &= ~OUTMOD0;
 		TA1CCTL0 |= OUTMOD_4;
 	}
 
-	LeftMotorForward(){
+void	RightMotorStop(){
+		TA1CCTL1 &= ~OUTMOD0;
+				TA1CCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
+			    TA1CCTL0 &= ~OUTMOD0;
+				TA1CCTL0 |= OUTMOD_5;
+	}
+
+void	LeftMotorForward(){
 		TACCTL1 &= ~OUTMOD0;
 		TACCTL1 |= OUTMOD_4;        // set TACCTL1 to Reset / Set mode
 		TACCTL0 &= ~OUTMOD0;
 		TACCTL0 |= OUTMOD_5;
 	}
 
-	LeftMotorBackward(){
+void	LeftMotorBackward(){
 		TACCTL1 &= ~OUTMOD0;
 		TACCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
 		TACCTL0 &= ~OUTMOD0;
 		TACCTL0 |= OUTMOD_4;
 	}
-	MoveForward(){
+
+void	LeftMotorStop(){
+		TACCTL1 &= ~OUTMOD0;
+		TACCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
+		TACCTL0 &= ~OUTMOD0;
+		TACCTL0 |= OUTMOD_5;
+	}
+
+void	MoveForward(){
 		RightMotorForward();
 		LeftMotorForward();
 	}
 
-	MoveBack(){
+void	MoveBack(){
 		RightMotorBackward();
 		LeftMotorBackward();
 	}
 
-	TurnRight(){
+void	TurnRight(){
 		RightMotorBackward();
 		LeftMotorForward();
 	}
 
-	TurnLeft(){
+void	TurnLeft(){
 		RightMotorForward();
 		LeftMotorBackward();
 	}
 
+void	StopBot(){
+		RightMotorStop();
+		LeftMotorStop();
+		}
 
+void    Delay(){
+		__delay_cycles(100000);
 }
 
