@@ -55,43 +55,43 @@ void initMotors()
 }
 
 
-void LeftMotorForward()
+void RightMotorForward()
     {
-		TA1CCTL1 &= ~OUTMOD0;
-		TA1CCTL1 |= OUTMOD_4;        // set TACCTL1 to Reset mode
 		TA1CCTL0 &= ~OUTMOD0;
-		TA1CCTL0 |= OUTMOD_5;
-	}
-
-void	LeftMotorBackward(){
+		TA1CCTL0 |= OUTMOD_4;        // set TACCTL1 to Reset mode
 		TA1CCTL1 &= ~OUTMOD0;
-		TA1CCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
-	    TA1CCTL0 &= ~OUTMOD0;
-		TA1CCTL0 |= OUTMOD_4;
+		TA1CCTL1 |= OUTMOD_5;
 	}
 
-void	LeftMotorStop(){
+void	RightMotorBackward(){
+		TA1CCTL0 &= ~OUTMOD0;
+		TA1CCTL0 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
+	    TA1CCTL1 &= ~OUTMOD0;
+		TA1CCTL1 |= OUTMOD_4;
+	}
+
+void	RightMotorStop(){
 		//TA1CCTL1 &= OUTMOD0;
 		TA1CCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
 		//TA1CCTL0 &= OUTMOD0;
 		TA1CCTL0 |= OUTMOD_5;
 	}
 
-void	RightMotorForward(){
-		TACCTL1 &= ~OUTMOD0;
-		TACCTL1 |= OUTMOD_4;        // set TACCTL1 to Reset / Set mode
+void	LeftMotorForward(){
 		TACCTL0 &= ~OUTMOD0;
-		TACCTL0 |= OUTMOD_5;
+		TACCTL0 |= OUTMOD_4;        // set TACCTL1 to Reset / Set mode
+		TACCTL1 &= ~OUTMOD0;
+		TACCTL1 |= OUTMOD_5;
 	}
 
-void	RightMotorBackward(){
-		TACCTL1 &= ~OUTMOD0;
-		TACCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
+void	LeftMotorBackward(){
 		TACCTL0 &= ~OUTMOD0;
-		TACCTL0 |= OUTMOD_4;
+		TACCTL0 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
+		TACCTL1 &= ~OUTMOD0;
+		TACCTL1 |= OUTMOD_4;
 	}
 
-void	RightMotorStop(){
+void	LeftMotorStop(){
 		//TACCTL1 &= OUTMOD0;
 		TACCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
 		//TACCTL0 &= OUTMOD0;
