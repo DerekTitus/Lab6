@@ -13,7 +13,7 @@ This program utilizes MoveBot.c and MoveBot.h
 Functions
 ===
 initMotors() - initializes the motors;
-=
+----
 MoveForward() - moves forward;
 MoveBack() - moves backward;
 TurnLeft() - turns left;
