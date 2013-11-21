@@ -13,11 +13,17 @@ This program utilizes MoveBot.c and MoveBot.h
 Functions
 ===
 initMotors() - initializes the motors;
-----
+
 MoveForward() - moves forward;
+
 MoveBack() - moves backward;
+
 TurnLeft() - turns left;
+
 TurnRight() - turns right;
+
 StopBot() - stops the robot;
+
 Delay() - does an action for 1000000 cycles;
+
 ShortDelay() - half of Delay();
