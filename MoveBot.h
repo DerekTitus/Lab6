@@ -24,7 +24,7 @@ void LeftMotorStop();
 
 void MoveForward();
 
-void MoveBackward();
+void MoveBack();
 
 void TurnLeft();
 
@@ -34,5 +34,6 @@ void StopBot();
 
 void Delay();
 
+void ShortDelay();
 
 #endif /* MOVEBOT_H_ */

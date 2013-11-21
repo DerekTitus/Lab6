@@ -17,20 +17,19 @@ void initMotors()
     P1DIR |= BIT2;                // TA0CCR1 on P1.2
     P1SEL |= BIT2;                // TA0CCR1 on P1.2
 
-    TACTL &= ~(MC1|MC0);            // stop timer A0
+    TA0CTL &= ~(MC1|MC0);            // stop timer A0
 
-    TACTL |= TACLR;                // clear timer A0
+    TA0CTL |= TACLR;                // clear timer A0
 
-    TACTL |= TASSEL1;           // configure for SMCLK
+    TA0CTL |= TASSEL1;           // configure for SMCLK
 
-    TACCR0 = 100;                // set signal period to 100 clock cycles (~100 microseconds)
-    TACCR1 = 50;                // set duty cycle to 25/100 (25%)
+    TA0CCR0 = 100;                // set signal period to 100 clock cycles (~100 microseconds)
+    TA0CCR1 = 100;
 
-    TACCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
-    TACCTL0 |= OUTMOD_5;
+    TA0CCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset
+    TA0CCTL0 |= OUTMOD_5;
 
-    TACTL |= MC0; //count up
-
+    TA0CTL |= MC0; //count up
 
     P2DIR |= BIT0;				//TA0.0 on P1.1
     P2SEL |= BIT0;              //TA0.0 on P1.1
@@ -45,18 +44,18 @@ void initMotors()
     TA1CTL |= TASSEL1;           // configure for SMCLK
 
     TA1CCR0 = 100;                // set signal period to 100 clock cycles (~100 microseconds)
-    TA1CCR1 = 50;                // set duty cycle to 25/100 (25%)
+    TA1CCR1 = 100;                // set duty cycle to 25/100 (25%)
 
     TA1CCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
     TA1CCTL0 |= OUTMOD_5;
 
     TA1CTL |= MC0; //count up
-    TACTL |= MC0;                // count up
+    //TACTL |= MC0;                // count up
 
 }
 
 
-void RightMotorForward()
+void LeftMotorForward()
     {
 		TA1CCTL1 &= ~OUTMOD0;
 		TA1CCTL1 |= OUTMOD_4;        // set TACCTL1 to Reset mode
@@ -64,38 +63,38 @@ void RightMotorForward()
 		TA1CCTL0 |= OUTMOD_5;
 	}
 
-void	RightMotorBackward(){
+void	LeftMotorBackward(){
 		TA1CCTL1 &= ~OUTMOD0;
 		TA1CCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
 	    TA1CCTL0 &= ~OUTMOD0;
 		TA1CCTL0 |= OUTMOD_4;
 	}
 
-void	RightMotorStop(){
-		TA1CCTL1 &= ~OUTMOD0;
-				TA1CCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
-			    TA1CCTL0 &= ~OUTMOD0;
-				TA1CCTL0 |= OUTMOD_5;
+void	LeftMotorStop(){
+		//TA1CCTL1 &= OUTMOD0;
+		TA1CCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
+		//TA1CCTL0 &= OUTMOD0;
+		TA1CCTL0 |= OUTMOD_5;
 	}
 
-void	LeftMotorForward(){
+void	RightMotorForward(){
 		TACCTL1 &= ~OUTMOD0;
 		TACCTL1 |= OUTMOD_4;        // set TACCTL1 to Reset / Set mode
 		TACCTL0 &= ~OUTMOD0;
 		TACCTL0 |= OUTMOD_5;
 	}
 
-void	LeftMotorBackward(){
+void	RightMotorBackward(){
 		TACCTL1 &= ~OUTMOD0;
 		TACCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
 		TACCTL0 &= ~OUTMOD0;
 		TACCTL0 |= OUTMOD_4;
 	}
 
-void	LeftMotorStop(){
-		TACCTL1 &= ~OUTMOD0;
+void	RightMotorStop(){
+		//TACCTL1 &= OUTMOD0;
 		TACCTL1 |= OUTMOD_5;        // set TACCTL1 to Reset / Set mode
-		TACCTL0 &= ~OUTMOD0;
+		//TACCTL0 &= OUTMOD0;
 		TACCTL0 |= OUTMOD_5;
 	}
 
@@ -125,6 +124,9 @@ void	StopBot(){
 		}
 
 void    Delay(){
-		__delay_cycles(100000);
+		__delay_cycles(1000000);
 }
 
+void	ShortDelay(){
+		__delay_cycles(500000);
+}
