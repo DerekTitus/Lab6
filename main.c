@@ -11,6 +11,33 @@ int main(void) {
 	
 	while(1)
 	{
+		TurnLeft();
+		ShortDelay();
+		StopBot();
+		Delay();
+		TurnRight();
+		ShortDelay();
+		StopBot();
+		Delay();
+		MoveForward();
+		Delay();
+		StopBot();
+		Delay();
+		MoveBack();
+		Delay();
+		StopBot();
+		Delay();
+		TurnRight();
+		Delay();
+		StopBot();
+		Delay();
+		TurnLeft();
+		Delay();
+		StopBot();
+		Delay();
+		Delay();
+		Delay();
+
 //		StopBot();
 //		Delay();
 //		MoveForward();
@@ -23,16 +50,16 @@ int main(void) {
 //		StopBot();
 //		Delay();\
 
-		TurnRight();
-		ShortDelay();
-		StopBot();
-		Delay();
-		Delay();
-		TurnRight();
-		Delay();
-		StopBot();
-		Delay();
-		Delay();
+//		TurnRight();
+//		ShortDelay();
+//		StopBot();
+//		Delay();
+//		Delay();
+//		TurnRight();
+//		Delay();
+//		StopBot();
+//		Delay();
+//		Delay();
 
 	}
 
